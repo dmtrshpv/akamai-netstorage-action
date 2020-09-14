@@ -1,4 +1,4 @@
-FROM 
+FROM dale432/akamai-jekyll-netstorage
 
 LABEL "com.github.actions.name"="Akamai Jekyll Netstorage Action"
 LABEL "com.github.actions.description"="CI action with Jekyll and Akamai Netstorage"
