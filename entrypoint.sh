@@ -10,9 +10,7 @@ set -e
 echo -e "${EDGERC}" > /root/.edgerc
 
 # Upload to NetStorage
-akamai netstorage \
-  upload /github/workspace/_site --directory /886532/_site \
-  --config /root/.edgerc \
-  --section netstorage
+akamai list
+akamai netstorage upload /github/workspace/_site --directory /886532/_site --config /root/.edgerc --section netstorage
   
   
