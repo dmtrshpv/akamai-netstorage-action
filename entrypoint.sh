@@ -1,6 +1,6 @@
-#!/bin/sh -l
+#!/bin/bash
 set -e
-set -o pipefail
+#set -o pipefail
 
 # Build Jekyll
 bundle install
