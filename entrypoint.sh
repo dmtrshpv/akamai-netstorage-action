@@ -11,7 +11,8 @@ echo -e "${EDGERC}" > /root/.edgerc
 
 # Upload to NetStorage
 akamai netstorage \
+  put --from /github/workspace/_site /886532/_site \
   --config /root/.edgerc \
-  --section netstorage \
-  put --from /github/workspace/_site /886532/_site
+  --section netstorage
+  
   
