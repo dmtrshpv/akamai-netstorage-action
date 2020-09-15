@@ -3,8 +3,8 @@ set -e
 #set -o pipefail
 
 # Build Jekyll
-bundle install
-bundle exec jekyll build
+/bin/bash -l -c "bundle install"
+/bin/bash -l -c "bundle exec jekyll build"
 
 # Create /root/.edgerc file from env variable
 echo -e "${EDGERC}" > /root/.edgerc
