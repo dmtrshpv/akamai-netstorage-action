@@ -2,28 +2,19 @@ name: "Akamai Jekyll Netstorage Action"
 description: "GitHub Action to build Jekyll assets and upload to Akamai NetStorage via Akamai API's"
 author: jdmevo123
 inputs:
-  command:
-    description:  'Purge command (invalidate, delete)'
+  uploadDirectory:
+    description:  'Netstorage Upload Directory'
     required: true
-    default: 'invalidate'
-  type:
-    description: 'Purge type (tags, cpcode,url)'
+  path:
+    description: 'Path to where Jekyll files are built. i.e. _site'
     required: true
-    default: 'tags'
-  ref:
-    description: 'Reference'
-    required: true
-  network:
-    description: 'Network'
-    required: true
+    default: '_site'
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.command}}
-    - ${{ inputs.type }}
-    - ${{ inputs.ref }}
-    - ${{ inputs.network }}
+    - ${{ inputs.uploadDirectory}}
+    - ${{ inputs.path }}
 branding:
   color: orange
   icon: trash-2
