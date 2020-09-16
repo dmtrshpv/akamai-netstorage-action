@@ -12,6 +12,6 @@ echo -e "${EDGERC}" > /root/.edgerc
 #test netstorage
 akamai install cli-netstorage
 # Upload to NetStorage
-akamai netstorage upload /github/workspace/_site --directory /886532/_site --config /root/.edgerc --section netstorage
+akamai netstorage --config /root/.edgerc --section default upload /github/workspace/_site --directory /886532/_site
   
   
