@@ -13,6 +13,6 @@ domainName=$3
 echo -e "${AKAMAI_PRIVATEKEY}" > /root/privatekey
 chmod 600 /root/privatekey
 # Upload to NetStorage
-scp -i /root/privatekey -oHostKeyAlgorithms=+ssh-dss -r /github/workspace/${path} sshacs@${domainName}.scp.upload.akamai.com:/${cpCode}/${path}/
+scp -i /root/privatekey -o 'HostKeyAlgorithms=+ssh-dss' -o 'StrictHostKeyChecking no' -r /github/workspace/${path} sshacs@${domainName}.scp.upload.akamai.com:/${cpCode}/${path}/
   
   
