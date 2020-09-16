@@ -15,9 +15,8 @@ chmod 0700 /root/.ssh
 ssh-keyscan ${domainName}.scp.upload.akamai.com > /root/.ssh/known_hosts
 
 # Create private_key file from env variable
-echo -ne "${AKAMAI_PRIVATEKEY}" > /root/.ssh/privatekey
+echo "${AKAMAI_PRIVATEKEY}" > /root/.ssh/privatekey
 chmod 600 /root/.ssh/privatekey
-cat /root/.ssh/privatekey
 eval 'ssh-agent -s'
 ssh-add /root/.ssh/privatekey
 # Upload to NetStorage
