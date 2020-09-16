@@ -1,6 +1,8 @@
 #!/bin/sh
 set -e
 #set -o pipefail
+cpCode=$1
+path=$2
 
 # Build Jekyll
 /bin/bash -l -c "bundle install"
@@ -10,8 +12,6 @@ set -e
 echo -e "${AKAMAI_PRIVATEKEY}" > /root/privatekey
 
 # Upload to NetStorage
-akamai netstorage --config /root/.edgerc --section default upload "/github/workspace/_site/*" --directory "/_site/"
-
-scp -i /root/privatekey -r /github/workspace/_site sshacs@nsmediadocs.scp.upload.akamai.com:/${{cpcode}}/_site/
+scp -i /root/privatekey -r /github/workspace/${path} sshacs@nsmediadocs.scp.upload.akamai.com:/${cpCode}/${path}/
   
   
