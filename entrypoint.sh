@@ -9,7 +9,10 @@ set -e
 # Create /root/.edgerc file from env variable
 echo -e "${EDGERC}" > /root/.edgerc
 
+cd /
+#test netstorage
+akamai netstorage upload
 # Upload to NetStorage
-/bin/bash -l -c "akamai netstorage upload /github/workspace/_site --directory /886532/_site --config /root/.edgerc --section netstorage"
+akamai netstorage upload /github/workspace/_site --directory /886532/_site --config /root/.edgerc --section netstorage
   
   
