@@ -15,8 +15,10 @@ chmod 0700 /root/.ssh
 ssh-keyscan ${domainName}.scp.upload.akamai.com > /root/.ssh/known_hosts
 
 # Create private_key file from env variable
-echo -e "${AKAMAI_PRIVATEKEY}" > /root/.ssh/privatekey
+echo -ne "${AKAMAI_PRIVATEKEY}" > /root/.ssh/privatekey
 chmod 600 /root/.ssh/privatekey
+cat /root/.ssh/privatekey
+ssh-add /root/.ssh/privatekey
 # Upload to NetStorage
 scp -i /root/.ssh/privatekey -o 'HostKeyAlgorithms=+ssh-dss' -o 'StrictHostKeyChecking no' -r /github/workspace/${path} sshacs@${domainName}.scp.upload.akamai.com:/${cpCode}/${path}/
   
