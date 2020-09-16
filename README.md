@@ -21,21 +21,29 @@ All sensitive variables should be [set as encrypted secrets](https://help.github
 
 You need to declare a `AKAMAI_PRIVATEKEY` secret in your repository containing the following structure :
 ```
------BEGIN OPENSSH PRIVATE KEY-----
+-----BEGIN RSA PRIVATE KEY-----
 xxxx
------END OPENSSH PRIVATE KEY-----
+-----END RSA PRIVATE KEY-----
 ```
 To setup a key and attach it to your netstorage account, follow this <a href="https://learn.akamai.com/en-us/webhelp/netstorage/netstorage-user-guide/GUID-3F8FC978-5A75-40E4-9220-8EAB862625E8.html" target="_blank">Netstorage Overview</a>.
 
-**NOTE:** OPENSSH format (key begins with `-----BEGIN OPENSSH PRIVATE KEY-----`) may not work due to OpenSSH version on VM.
+**NOTE:** OPENSSH format (key begins with `-----BEGIN OPENSSH PRIVATE KEY-----`) may not work.
 Please use PEM format (begins with `-----BEGIN RSA PRIVATE KEY-----`) instead.
-In order to convert your key inline to PEM format simply use `ssh-keygen -p -m PEM -f ~/.ssh/id_rsa`.
+Use the following to convert your key inline to PEM format `ssh-keygen -p -m PEM -f ~/.ssh/id_rsa`.
 
 ## Inputs
 
-### `something`
+### `uploadDirectory`
 **Required**
-something: Currently set to use repository name
+uploadDirectory: '1234' Upload Directory in AkamaiNetStorage
+
+### `path`
+**Required**
+path: '_site' artifact path
+
+### `domainName`
+**Required**
+domainName: 'example1' Upload domain name in Akamai Netstorage
 
 ## `workflow.yml` Example
 
