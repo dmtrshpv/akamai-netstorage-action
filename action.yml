@@ -9,12 +9,16 @@ inputs:
     description: 'Path to where Jekyll files are built. i.e. _site'
     required: true
     default: '_site'
+  domainName:
+    description: 'Upload account ID'
+    required: true
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
     - ${{ inputs.uploadDirectory}}
     - ${{ inputs.path }}
+    - ${{ inputs.domainName }}
 branding:
   color: orange
   icon: trash-2
