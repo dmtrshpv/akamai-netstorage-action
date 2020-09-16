@@ -27,6 +27,10 @@ xxxx
 ```
 To setup a key and attach it to your netstorage account, follow this <a href="https://learn.akamai.com/en-us/webhelp/netstorage/netstorage-user-guide/GUID-3F8FC978-5A75-40E4-9220-8EAB862625E8.html" target="_blank">Netstorage Overview</a>.
 
+**NOTE:** OPENSSH format (key begins with `-----BEGIN OPENSSH PRIVATE KEY-----`) may not work due to OpenSSH version on VM.
+Please use PEM format (begins with `-----BEGIN RSA PRIVATE KEY-----`) instead.
+In order to convert your key inline to PEM format simply use `ssh-keygen -p -m PEM -f ~/.ssh/id_rsa`.
+
 ## Inputs
 
 ### `something`
