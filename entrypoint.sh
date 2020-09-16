@@ -7,11 +7,11 @@ set -e
 /bin/bash -l -c "bundle exec jekyll build"
 
 # Create private_key file from env variable
-echo -e "${EDGERC}" > /root/.edgerc
+echo -e "${AKAMAI_PRIVATEKEY}" > /root/privatekey
 
 # Upload to NetStorage
 akamai netstorage --config /root/.edgerc --section default upload "/github/workspace/_site/*" --directory "/_site/"
 
-scp -i <private key> -r /github/workspace/_site sshacs@nsmediadocs.scp.upload.akamai.com:/${{cpcode}}/_site/
+scp -i /root/privatekey -r /github/workspace/_site sshacs@nsmediadocs.scp.upload.akamai.com:/${{cpcode}}/_site/
   
   
