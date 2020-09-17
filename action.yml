@@ -1,16 +1,18 @@
-name: "Akamai Jekyll Netstorage Action"
-description: "GitHub Action to build Jekyll assets and upload to Akamai NetStorage via Akamai API's"
+name: "Akamai Netstorage Action"
+description: "GitHub Action to upload to Akamai NetStorage via Akamai API's"
 author: jdmevo123
 inputs:
   uploadDirectory:
     description:  'Netstorage Upload Directory'
     required: true
   path:
-    description: 'Path to where Jekyll files are built. i.e. _site'
+    description: 'Path where build artifacts are stored. i.e. dir'
     required: true
-    default: '_site'
   domainName:
     description: 'Upload account ID'
+    required: true
+  nspath:
+    description: 'Path to where to upload NetStorage files. i.e. _site'
     required: true
 runs:
   using: 'docker'
@@ -19,6 +21,7 @@ runs:
     - ${{ inputs.uploadDirectory}}
     - ${{ inputs.path }}
     - ${{ inputs.domainName }}
+    - ${{ inputs.nspath }}
 branding:
   color: orange
-  icon: trash-2
+  icon: upload-cloud
