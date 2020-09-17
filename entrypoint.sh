@@ -4,10 +4,7 @@ set -e
 cpCode=$1
 path=$2
 domainName=$3
-
-# Build Jekyll
-/bin/bash -l -c "bundle install"
-/bin/bash -l -c "bundle exec jekyll build"
+nspath=$4
 
 #Authorise SSH host
 mkdir -p /root/.ssh
@@ -19,5 +16,5 @@ echo "${AKAMAI_PRIVATEKEY}" > /root/.ssh/privatekey
 chmod 600 /root/.ssh/privatekey
 
 # Upload to NetStorage
-scp -i /root/.ssh/privatekey -o 'HostKeyAlgorithms=+ssh-dss' -o 'StrictHostKeyChecking no' -r /github/workspace/${path}/ sshacs@${domainName}.scp.upload.akamai.com:/${path}  
+scp -i /root/.ssh/privatekey -o 'HostKeyAlgorithms=+ssh-dss' -o 'StrictHostKeyChecking no' -r /github/workspace/${path}/ sshacs@${domainName}.scp.upload.akamai.com:/${nspath}  
   
